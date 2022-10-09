@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
+<script>
+var classObject = {
+  "ACCT 1A":{
+    "Dr. Haywood": [],
+    "Dr. Standridge": [],
+    "Dr. Wright": [],
+    "Dr. Ka": [],
+    "Dr. Stendahl": [],
+    "Dr. Ravikumar": []
+  },
+  "ACCT 1AH":{
+    "Dr. Krijnen": [],
+    "Dr. Brasher": [],
+    "Dr. Rodriguez": []
+  },
+  "ACCT 1B":{
+    "Dr. Demers": [],
+    "Dr. Nguyen": [],
+    "Dr. Guillen": [],
+    "Dr. Schneider": []
+  },
+  "ACCT 1BH":{
+    "Dr. O'Connell": [],
+    "Dr. Campbell": []
+  },
+  "ACCT 1C":{
+    "Dr. Pineda": [],
+    "Dr. Roman": [],
+    "Dr. Mcdowell": [],
+    "Dr. Tomlinson": [],
+    "Dr. Tolaio": []
+  },
+  "ACCT 1CH":{
+    "Dr. Hua": [],
+    "Dr. Park": []
+  },
+  "ACCT 51A":{
+    "Dr. Ambli": []
+  },
+  "ACCT 64":{
+    "Dr. Descioli": []
+  },
+  "ACCT 67":{
+    "Dr. Gartin": []
+  },
+  "ACCT 68":{
+    "Dr. Toruño": []
+  },
+  "ACCT 73":{
+    "Dr. Gierman": []
+  },
+  "ACCT 74":{
+    "Dr. Rangel": []
+  },
+  "ACCT 88":{
+    "Dr. Villarreal": []
+  },
+  "ADMJ 1":{
+    "Dr. Carucci": [],
+    "Dr. Headley": [],
+    "Dr. Hall": [],
+    "Dr. Paulazzo": [],
+    "Dr. Webb": [],
+    "Dr. Barros": []
+  },
+  "ADMJ 3":{
+    "Dr. McNabb": [],
+    "Dr. Carmody": [],
+    "Dr. Paulazzo": [],
+    "Dr. Cahn": [],
+    "Dr. Montgomery": [],
+    "Dr. Dawson": []
+  },
+  "ADMJ 5":{
+    "Dr. Young": [],
+    "Dr. McNabb": [],
+    "Dr. Touchton": [],
+    "Dr. Hilger": [],
+    "Dr. Tibbs": []
+  },
+  "ADMJ 6":{
+    "Dr. Froehlich": []
+  },
+  "ADMJ 11":{
+    "Dr. Guo": []
+  },
+  "ADMJ 29":{
+    "Dr. Hall": [],
+    "Dr. Carmody": [],
+    "Dr. Paulazzo": [],
+    "Dr. Tibbs": []
+  },
+  "ADMJ 29":{
+    "Dr. Lin": []
+  },
+  "ADMJ 51":{
+    "Dr. Plottier": []
+  },
+  "ADMJ 54":{
+    "Dr. Legon": []
+  },
+  "ADMJ 75":{
+    "Dr. Zhang": []
+  },
+  "ADMJ 84":{
+    "Dr. Hsu": []
+  },
+  "ADMJ 95":{
+    "Dr. Kasthuri": []
+  },
+  "AFAM 10":{
+    "Dr. Haghighi": [],
+    "Dr. Khazanovsky": [],
+    "Dr. Kraja": []
+  },
+  "AFAM 12A":{
+    "Dr. Vellimedu": []
+  },
+  "APRN 50A":{
+    "Dr. Bombwal": [],
+    "Dr. Fisher": [],
+    "Dr. Moondhra": [],
+    "Dr. Mathis": [],
+    "Dr. Raghunath": [],
+    "Dr. Pogde": [],
+    "Dr. Rao": [],
+    "Dr. Kalluri": [],
+    "Dr. Gollamudi": []
+  },
+  "APRN 50B":{
+    "Dr. Lee": [],
+    "Dr. Zhu": [],
+    "Dr. Li": []
+  },
+  "APRN 60":{
+    "Dr. Kim": []
+  },
+  "APRN 60A":{
+    "Dr. Lee": []
+  },
+  "APRN 60B":{
+    "Dr. Gu": []
+  },
+  "BIOL 6A":{
+    "Dr. Alameer": [],
+    "Dr. Bambhania": [],
+    "Dr. Lai": [],
+    "Dr. Cattivera": []
+  },
+  "BIOL 6AH":{
+    "Dr. Lerdworatawee": []
+  },
+  "BIOL 10":{
+    "Dr. Wu": [],
+    "Dr. Singh": [],
+    "Dr. Nader": []
+  },
+
+}
+
+window.onload = function() {
+  var classSel = document.getElementById("class");
+  var professorSel = document.getElementById("professor");
+  for (var x in classObject) {
+    classSel.options[classSel.options.length] = new Option(x, x);
+  }
+  classSel.onchange = function() {
+    //empty Professors- and Grades- dropdowns
+    professorSel.length = 1;
+    //display correct values
+    for (var y in classObject[this.value]) {
+      professorSel.options[professorSel.options.length] = new Option(y, y);
+    }
+  }
+  
+}
+</script>
+</head>
+
+<body>
+
+  <header>
+      
+    <div class="container">
+      <h1>De Anza Workload Predictor</h1>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>News</li>
+          <li>Contact</li>
+          <li>About</li>
+        </ul>
+      </nav>
+      
+      </div>
+  </header>
+
+<h2 class="instruction">Find out hours required for a grade</h2>
+<form name="form1" id="form1" action="/action_page.php">
+Classes: <select name="class" id="class">
+    <option value="" selected="selected">Select class</option>
+  </select>
+  <br><br>
+Professors: <select name="professor" id="professor">
+    <option value="" selected="selected">Please select class first</option>
+  </select>
+  <br><br>
+
+</form>
+
+<form action="{{ url_for("predict")}}" method="post">
+
+  <label for="gradepercentage">Target Grade:</label>
+  <input type="number" id="gradepercentage" name="gradepercentage" placeholder="Grade Percentage">
+  <button type="submit">Predict</button>
+  
+  <br><br>
+  {% if prediction %}
+  <br><br>
+  <p class="text-center"> Recommended hours spent per week: {{prediction}}</p>
+  <br><br>
+  <p class ="text-center>"> Grade Range: 65 - 100</p>
+  {% endif %}
+
+</body>
+
+<div class="footer">
+  <p></p>
+</div>
+
+</html>
+

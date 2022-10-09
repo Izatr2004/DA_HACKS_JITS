@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Quicksand";
+}
+
+.header{
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear- gradient(rgba(4,9,30,0.7)), url(images/9ojkuikyal.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.container{
+  margin: 0 auto;
+  background: #edaf13;
+  width: 100%;
+}
+
+header {
+  background: #92041a;
+  width: 100%;
+  
+}
+
+header::after{
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.container h1 {
+  text-align: left;
+  color: #92041a;
+  font-size: 60px;
+  font-weight: bold;
+  padding-left: 20px;
+  padding-top:30px;
+  padding-bottom:30px
+}
+
+nav {
+  float: right;
+  color: #92041a;
+  padding: 20px;
+
+}
+
+nav ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: right;
+  color: #edaf13;
+  font-size: 20px;
+  font-weight: bold;
+  padding-right:20px;
+  padding-top:15px;
+  padding-bottom:15px
+}
+
+nav li{
+  display: inline-block;
+  margin-left: 50px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #92041a;
+  color: white;
+  text-align: center;
+  padding-bottom: 75px;
+}
+
+h1{
+  font-weight: bold;
+  color: #92041a;
+  font-size: 32px;
+  text-align: left;
+  
+}
+
+body{
+  text-align: center;
+  font-weight: bold;
+  color: #edaf13;
+  font-size: 18px;
+}
+
+.forms{
+  padding: 140px;
+}
+
+h2{
+  padding-bottom: 50px;
+  padding-top: 30px;
+  color:#92041a;
+}
